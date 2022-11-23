@@ -1,0 +1,244 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 500vh;
+    background-color: rgb(230, 230, 230);
+    animation: bg 0.8s linear;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+    animation-iteration-count: 1;
+    animation-fill-mode: both; 
+}
+
+#stop {
+    animation: none;
+}
+
+.cube-container {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    pointer-events: all;
+}
+
+@keyframes bg {
+    to {
+        background-color: rgb(6, 12, 22);
+    }
+}
+
+.progress {
+    height: 3px;
+    width: 0%;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    animation: progress 1s linear;
+}
+
+@keyframes progress {
+    to {
+        background-color: rgb(20, 255, 226);
+        width: 100%;
+    }
+}
+
+.cube-wrap {
+    --size: 10vmin;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    perspective: 100vmin;
+    transition: all 0.5s ease;
+    animation: appears-element 1s linear;
+    pointer-events: all;
+}
+
+@keyframes appears-element {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.ccenter {
+    margin: 0 auto;
+}
+
+.cleft {
+    margin-left: 50%;
+}
+
+.cright {
+    margin-right: 50%;
+}
+
+.cube {
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateZ(45deg) rotateY(-45deg);
+    animation: cube 13s linear infinite;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.cube:hover {
+    animation: cube 1s linear infinite;
+}
+
+.cube-wrap:hover {
+    transform: scale(2);
+    transition: all 0.5s ease;
+    pointer-events: all;
+}
+
+@keyframes cube {
+    from {
+        transform: rotateX(0deg) rotateZ(45deg) rotateY(-45deg);
+    }
+
+    to{
+        transform: rotateX(360deg) rotateZ(45deg) rotateY(-45deg);
+    }
+}
+
+.side {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    background-color: #eee;
+    backface-visibility: visible;
+    top: calc(var(--size) * -.5);
+    left: calc(var(--size) * -.5);
+}
+
+.top {
+    background-color: #c1c1c1;
+    transform: rotateX(90deg) translateZ(calc(var(--size) * .5));
+}
+
+.bottom {
+    background-color: #999;
+    transform: rotateX(90deg) translateZ(calc(var(--size) * -.5));
+}
+
+.left {
+    background-color: #ccc;
+    transform: rotateY(90deg) translateZ(calc(var(--size) * .5));
+}
+
+.right {
+    background-color: #ddd;
+    transform: rotateY(90deg) translateZ(calc(var(--size) * -.5));
+}
+
+.front {
+    background-color: #aaa;
+    transform: translateZ(calc(var(--size) * .5));
+}
+
+.back {
+    background-color: #bbb;
+    transform: translateZ(calc(var(--size) * -.5));
+}
+
+.cleft .top {
+    background-color: #c02626;
+    transform: rotateX(90deg) translateZ(calc(var(--size) * .5));
+}
+
+.cleft .bottom {
+    background-color: rgb(197, 40, 40);
+    transform: rotateX(90deg) translateZ(calc(var(--size) * -.5));
+}
+
+.cleft .left {
+    background-color: rgb(236, 67, 67);
+    transform: rotateY(90deg) translateZ(calc(var(--size) * .5));
+}
+
+.cleft .right {
+    background-color: rgb(204, 65, 65);
+    transform: rotateY(90deg) translateZ(calc(var(--size) * -.5));
+}
+
+.cleft .front {
+    background-color: rgb(240, 32, 32);
+    transform: translateZ(calc(var(--size) * .5));
+}
+
+.cleft .back {
+    background-color: rgb(255, 70, 70);
+    transform: translateZ(calc(var(--size) * -.5));
+}
+
+.cright .top {
+    background-color: #04b404;
+    transform: rotateX(90deg) translateZ(calc(var(--size) * .5));
+}
+
+.cright .bottom {
+    background-color: rgb(40, 197, 61);
+    transform: rotateX(90deg) translateZ(calc(var(--size) * -.5));
+}
+
+.cright .left {
+    background-color: rgb(47, 190, 11);
+    transform: rotateY(90deg) translateZ(calc(var(--size) * .5));
+}
+
+.cright .right {
+    background-color: rgb(25, 180, 4);
+    transform: rotateY(90deg) translateZ(calc(var(--size) * -.5));
+}
+
+.cright .front {
+    background-color: rgb(38, 161, 22);
+    transform: translateZ(calc(var(--size) * .5));
+}
+
+.cright .back {
+    background-color: rgb(10, 148, 5);
+    transform: translateZ(calc(var(--size) * -.5));
+}
+
+.hidden {
+    visibility: hidden;
+    animation: hidden-element 0.5s ease;
+}
+
+
+
+@keyframes hidden-element {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+    
+}
+
+:root *{
+    /*paused para só funcionar quando scrollar*/
+    /* animation-play-state: running; */
+    /*descer com o scroll do mouse \/ */
+    /* animation-delay: calc(var(--scroll) * -1s); */
+    /* quantidade de vezes */
+    /* animation-iteration-count: 1;*/
+    animation-fill-mode: both; 
+}
