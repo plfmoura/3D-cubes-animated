@@ -16,14 +16,36 @@ body {
     animation-iteration-count: 1;
     animation-fill-mode: both; 
 }
+.header-container {
+    margin-top: 13%;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
 
-#stop {
-    animation: none;
+.text-container {
+    grid-area: 1/1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-container h1 {
+    width: 90%;
+    font-size: 4rem;
+}
+
+.text-container p {
+    width: 90%;
+    margin-top: 1rem;
+    font-size: 1.5rem;
 }
 
 .cube-container {
-    width: 100%;
-    height: 20%;
+    grid-area: 1/2;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -32,7 +54,7 @@ body {
 
 @keyframes bg {
     to {
-        background-color: rgb(6, 12, 22);
+        background-color: #021012;
     }
 }
 
@@ -55,7 +77,7 @@ body {
 
 .cube-wrap {
     --size: 10vmin;
-    position: fixed;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,18 +98,6 @@ body {
     }
 }
 
-.ccenter {
-    margin: 0 auto;
-}
-
-.cleft {
-    margin-left: 50%;
-}
-
-.cright {
-    margin-right: 50%;
-}
-
 .cube {
     transform-style: preserve-3d;
     transform: rotateX(0deg) rotateZ(45deg) rotateY(-45deg);
@@ -97,7 +107,7 @@ body {
 }
 
 .cube:hover {
-    animation: cube 1s linear infinite;
+    animation: cube 5s linear infinite;
 }
 
 .cube-wrap:hover {
@@ -154,83 +164,6 @@ body {
 .back {
     background-color: #bbb;
     transform: translateZ(calc(var(--size) * -.5));
-}
-
-.cleft .top {
-    background-color: #c02626;
-    transform: rotateX(90deg) translateZ(calc(var(--size) * .5));
-}
-
-.cleft .bottom {
-    background-color: rgb(197, 40, 40);
-    transform: rotateX(90deg) translateZ(calc(var(--size) * -.5));
-}
-
-.cleft .left {
-    background-color: rgb(236, 67, 67);
-    transform: rotateY(90deg) translateZ(calc(var(--size) * .5));
-}
-
-.cleft .right {
-    background-color: rgb(204, 65, 65);
-    transform: rotateY(90deg) translateZ(calc(var(--size) * -.5));
-}
-
-.cleft .front {
-    background-color: rgb(240, 32, 32);
-    transform: translateZ(calc(var(--size) * .5));
-}
-
-.cleft .back {
-    background-color: rgb(255, 70, 70);
-    transform: translateZ(calc(var(--size) * -.5));
-}
-
-.cright .top {
-    background-color: #04b404;
-    transform: rotateX(90deg) translateZ(calc(var(--size) * .5));
-}
-
-.cright .bottom {
-    background-color: rgb(40, 197, 61);
-    transform: rotateX(90deg) translateZ(calc(var(--size) * -.5));
-}
-
-.cright .left {
-    background-color: rgb(47, 190, 11);
-    transform: rotateY(90deg) translateZ(calc(var(--size) * .5));
-}
-
-.cright .right {
-    background-color: rgb(25, 180, 4);
-    transform: rotateY(90deg) translateZ(calc(var(--size) * -.5));
-}
-
-.cright .front {
-    background-color: rgb(38, 161, 22);
-    transform: translateZ(calc(var(--size) * .5));
-}
-
-.cright .back {
-    background-color: rgb(10, 148, 5);
-    transform: translateZ(calc(var(--size) * -.5));
-}
-
-.hidden {
-    visibility: hidden;
-    animation: hidden-element 0.5s ease;
-}
-
-
-
-@keyframes hidden-element {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-    
 }
 
 :root *{
